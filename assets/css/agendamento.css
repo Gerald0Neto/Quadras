@@ -1,0 +1,72 @@
+body {
+  background: #f5f7fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: #0f172a;
+  color: #fff;
+  padding: 20px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.menu li:hover,
+.menu li.active {
+  background: #22c55e;
+  color: #fff;
+}
+
+.logo {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 20px;
+}
+
+.card-resumo {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.calendario td {
+  padding: 6px;
+}
+
+.slot {
+  background: #e8f7ef;
+  border: 1px solid #22c55e;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 12px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.slot.ocupado {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

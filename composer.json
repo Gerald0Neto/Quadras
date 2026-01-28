@@ -1,0 +1,16 @@
+{
+    "name": "gneto/onesoft-quadras",
+    "autoload": {
+        "psr-4": {
+           "App\\": "app/",
+           "Config\\": "config/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Geraldo",
+            "email": "onixblackcx@gmail.com"
+        }
+    ],
+    "require": {}
+}

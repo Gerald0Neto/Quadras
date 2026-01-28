@@ -1,0 +1,48 @@
+/* CARD DA QUADRA */
+.quadra-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* DIAS */
+.dia {
+  margin-bottom: 15px;
+}
+
+.dia h6 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* HORÁRIOS (ESTILO CINEMA) */
+.horarios {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+}
+
+.horario {
+  border: 1px solid #22c55e;
+  color: #22c55e;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.horario:hover {
+  background: #22c55e;
+  color: #fff;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

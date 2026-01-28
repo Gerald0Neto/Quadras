@@ -1,0 +1,66 @@
+body {
+  background: #f5f7fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: #0f172a;
+  color: #fff;
+  padding: 20px;
+}
+
+.logo {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.menu li:hover,
+.menu li.active {
+  background: #22c55e;
+}
+
+/* CONTEÚDO */
+.content {
+  padding: 25px;
+}
+
+/* CARDS */
+.card-resumo {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+/* USUÁRIOS */
+.usuario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  margin-bottom: 10px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
