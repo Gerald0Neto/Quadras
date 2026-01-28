@@ -2,6 +2,10 @@
 
 namespace App\Controllers\Publicarea;
 
+use App\Models\LoginUser\LoginFormModel;
+use App\Services\Auth;
+use App\Services\Redirect;
+
 class FormLogin
 {
     public function index(): void
@@ -16,18 +20,17 @@ class FormLogin
         $email = $_POST['email'] ?? NULL;
         $senha = $_POST['senha'] ?? NULL;
 
-        if ($email === 'admin@admin.com' && $senha === '123') {
+        $usuarioModel = new LoginFormModel();
+        $user = $usuarioModel->buscarDadosUser($email, $senha);
 
-            $_SESSION['user'] = [
-                'id' => 1,
-                'nome' => 'Administrador'
-            ];
-
-            header("Location: ./../Inicial");
+        if ($user && password_verify($senha, $user['senha'])) {
+            Auth::login($user);
+            Redirect::to("Inicial");
+            //header("Location: ./../Inicial");
             exit;
         }
 
-        header("Location: ./?error=1");
+        Redirect::to('Form-Login?error=1');
         exit;
     }
 }
