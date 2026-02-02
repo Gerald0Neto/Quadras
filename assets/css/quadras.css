@@ -77,3 +77,43 @@ body {
     display: none;
   }
 }
+
+.acoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Estilo base dos botões */
+.btn-acao {
+    border: 1px solid #e5e7eb;
+    background-color: #fff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+/* 🟡 EDITAR */
+.btn-editar:hover {
+    background-color: #facc15; /* amarelo */
+    border-color: #facc15;
+    color: #000;
+}
+
+/* 🔴 APAGAR */
+.btn-apagar:hover {
+    background-color: #ef4444; /* vermelho */
+    border-color: #ef4444;
+    color: #fff;
+}
+
+/* Ícones acompanham a cor */
+.btn-apagar:hover i,
+.btn-editar:hover i {
+    color: inherit;
+}
