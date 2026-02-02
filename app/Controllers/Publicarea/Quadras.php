@@ -7,6 +7,23 @@ use App\Models\QuadrasGerenciamento\QuadrasModel;
 
 class Quadras
 {
+    public function excluir()
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+            $dados = [
+                'id' => $_POST['id']
+            ];
+
+            $modelQuadras = new QuadrasModel();
+            $modelQuadras->excluir($dados);
+
+            header('Location: ../quadras');
+            exit;
+        }
+
+    }
+
     public function salvar()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

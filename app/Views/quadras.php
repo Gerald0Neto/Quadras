@@ -7,7 +7,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/quadras.css">
+  <link rel="stylesheet" href="./assets/css/quadrass.css">
 
 
 </head>
@@ -44,7 +44,7 @@
     </div>
 
     <!-- FILTROS -->
-    <div class="row mb-4 g-2">
+    <!--<div class="row mb-4 g-2">
       <div class="col-md-8">
         <input type="text" id="buscar" class="form-control" placeholder="Buscar quadra...">
       </div>
@@ -57,6 +57,7 @@
         </select>
       </div>
     </div>
+    -->
 
     <!-- LISTA DE QUADRAS -->
     <div class="row g-3">
@@ -73,9 +74,14 @@
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
 
-                            <button class="btn-acao btn-apagar">
+                            <button class="btn-acao btn-apagar"
+                                    data-id="<?= $quadra['id'] ?>"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalExcluir">
                                 <i class="bi bi-trash"></i>
                             </button>
+
+
                         </div>
                   </div>
               </div>
@@ -93,7 +99,51 @@
   </main>
 </div>
 
-<!-- MODAL -->
+<!-- MODAL EXCLUIR -->
+<form method="POST" action="./quadras/excluir">
+    <input type="hidden" name="id" id="quadraId">
+    <div class="modal fade" id="modalExcluir" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Excluir Quadra</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+
+            <div class="mb-3">
+              <label class="form-label">Tem certeza de que deseja excluir esta quadra?</label>
+      
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+
+            <!-- BOTÃO QUE ENVIA O FORM -->
+            <button type="submit" class="btn btn-success">
+              Confirmar
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</form>
+<script>
+document.querySelectorAll('.btn-apagar').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('quadraId').value = btn.dataset.id;
+  });
+});
+</script>
+
+<!-- MODAL SALVAR -->
 <form method="POST" action="./quadras/salvar">
 
 <div class="modal fade" id="modalQuadra" tabindex="-1">

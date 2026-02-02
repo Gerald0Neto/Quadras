@@ -10,7 +10,8 @@ class QuadrasModel
     public function listar()
     {
         $db = Conexao::getConnection();
-        $stmtquery = "SELECT	q.nome,
+        $stmtquery = "SELECT	q.id,
+                                q.nome,
                                 q.status,
                                 tq.nome AS tipo
                     FROM quadras q
@@ -23,6 +24,15 @@ class QuadrasModel
         return $resultstmt;
     }
 
+    public function excluir($dados)
+    {
+        $db = Conexao::getConnection();
+        $sql = "DELETE FROM quadras WHERE id = :id";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":id", $dados['id'], PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
     public function inserir($dados)
     {
         $db = Conexao::getConnection();
@@ -30,9 +40,9 @@ class QuadrasModel
                 VALUES (:nome, :tipo, :status)";
 
         $stmt = $db->prepare($sql);
-        $stmt->bindParam(":nome", $dados['nome']);
-        $stmt->bindParam(":tipo", $dados['tipo']);
-        $stmt->bindParam(":status", $dados['status']);
+        $stmt->bindParam(":nome", $dados['nome'],     PDO::PARAM_STR);
+        $stmt->bindParam(":tipo", $dados['tipo'],     PDO::PARAM_INT);
+        $stmt->bindParam(":status", $dados['status'], PDO::PARAM_STR);
         return $stmt->execute($dados);
     }
 }
