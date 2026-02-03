@@ -45,14 +45,14 @@
     <!-- FILTROS -->
     <div class="d-flex gap-2 mb-3">
       <button class="btn btn-light active">Todos</button>
-      <button class="btn btn-light">Usuários</button>
-      <button class="btn btn-light">Equipes</button>
+      <!--<button class="btn btn-light">Usuários</button>
+      <button class="btn btn-light">Equipes</button> -->
     </div>
 
-    <!-- BUSCA -->
+    <!-- BUSCA 
     <div class="mb-3">
       <input type="text" class="form-control" placeholder="Buscar por nome ou email...">
-    </div>
+    </div>-->
 
     <!-- TABELA -->
     <div class="card p-3">
