@@ -33,6 +33,19 @@ class QuadrasModel
         return $stmt->execute();
     }
 
+    public function update($dados)
+    {
+        $db = Conexao::getConnection();
+
+        $sql = "UPDATE quadras SET nome = :nome, tipo_id = :tipo, status = :status WHERE id = :id";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":nome",   $dados['nome'],     PDO::PARAM_STR);
+        $stmt->bindParam(":tipo",   $dados['tipo'],     PDO::PARAM_INT);
+        $stmt->bindParam(":status", $dados['status'],   PDO::PARAM_STR);
+        $stmt->bindParam(":id",     $dados['id'],       PDO::PARAM_INT);
+        return $stmt->execute($dados);
+    }
+
     public function inserir($dados)
     {
         $db = Conexao::getConnection();
@@ -40,9 +53,9 @@ class QuadrasModel
                 VALUES (:nome, :tipo, :status)";
 
         $stmt = $db->prepare($sql);
-        $stmt->bindParam(":nome", $dados['nome'],     PDO::PARAM_STR);
-        $stmt->bindParam(":tipo", $dados['tipo'],     PDO::PARAM_INT);
-        $stmt->bindParam(":status", $dados['status'], PDO::PARAM_STR);
+        $stmt->bindParam(":nome",   $dados['nome'],     PDO::PARAM_STR);
+        $stmt->bindParam(":tipo",   $dados['tipo'],     PDO::PARAM_INT);
+        $stmt->bindParam(":status", $dados['status'],   PDO::PARAM_STR);
         return $stmt->execute($dados);
     }
 }

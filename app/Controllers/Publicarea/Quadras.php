@@ -7,6 +7,24 @@ use App\Models\QuadrasGerenciamento\QuadrasModel;
 
 class Quadras
 {
+    public function editar()
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+            $dados = [
+                'id'     => (int) $_POST['id'] ?? NULL,
+                'nome'   => $_POST['nome']     ?? NULL,
+                'tipo'   => $_POST['tipo']     ?? NULL,
+                'status' => $_POST['status']   ?? NULL 
+            ];
+
+            $model = new QuadrasModel();
+            $model->update($dados);
+
+            header('Location: ../quadras');
+            exit;
+        }
+    }
     public function excluir()
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -29,9 +47,9 @@ class Quadras
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $dados = [
-                'nome'   => $_POST['nome'],
-                'tipo'   => $_POST['tipo'],
-                'status' => $_POST['status']
+                'nome'   => $_POST['nome']   ?? NULL,
+                'tipo'   => $_POST['tipo']   ?? NULL,
+                'status' => $_POST['status'] ?? NULL
             ];
 
             $model = new QuadrasModel();

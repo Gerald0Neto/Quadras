@@ -70,7 +70,13 @@
                         <h5 class="mt-2"> <?= htmlspecialchars($quadra['nome']) ?></h5>
                         <p class="text-muted"><?= htmlspecialchars($quadra['tipo']) ?></p>
                         <div class="acoes">
-                            <button class="btn-acao btn-editar">
+                            <button class="btn-acao btn-editar"
+                                    data-id="<?= $quadra['id'] ?>"
+                                    data-nome="<?= htmlspecialchars($quadra['nome']) ?>"
+                                    data-tipo="<?= (int)$quadra['tipo'] ?>"
+                                    data-status="<?= $quadra['status'] ?>"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalEditar">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
 
@@ -98,6 +104,82 @@
 
   </main>
 </div>
+<!-- MODAL EDITAR -->
+<form method="POST" action="./quadras/editar">
+    <input type="hidden" name="id" id="quadraIdeditar">
+
+    <div class="modal fade" id="modalEditar" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Quadra</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+
+            <div class="mb-3">
+              <label class="form-label">Nome</label>
+              <input type="text" class="form-control" name="nome" id="editarNome">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Tipo</label>
+              <select class="form-select" name="tipo" id="editarTipo">
+                  <option value="1">Futsal</option>
+                  <option value="2">Basquete</option>
+                  <option value="3">Vôlei</option>
+                  <option value="4">Tênis</option>
+                  <option value="5">Poliesportiva</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Status</label>
+              <select class="form-select" name="status" id="editarStatus">
+                <option value="Disponível">Disponível</option>
+                <option value="Ocupada">Ocupada</option>
+                <option value="Manutenção">Manutenção</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+
+            <button type="submit" class="btn btn-success">
+              Confirmar
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</form>
+<script>
+const modalEditar = document.getElementById('modalEditar');
+
+modalEditar.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget; // botão que abriu o modal
+
+    document.getElementById('quadraIdeditar').value = button.dataset.id;
+    document.getElementById('editarNome').value     = button.dataset.nome;
+    document.getElementById('editarTipo').value     = button.dataset.tipo;
+    document.getElementById('editarStatus').value   = button.dataset.status;
+});
+</script>
+
+<script>
+document.querySelectorAll('.btn-editar').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('quadraIdeditar').value = btn.dataset.id;
+  });
+});
+</script>
 
 <!-- MODAL EXCLUIR -->
 <form method="POST" action="./quadras/excluir">
