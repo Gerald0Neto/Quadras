@@ -14,6 +14,17 @@ CREATE TABLE perfis (
     nome VARCHAR(50) NOT NULL UNIQUE
 );
 
+ALTER TABLE perfis
+ADD COLUMN css_class VARCHAR(50) NOT NULL AFTER nome;
+
+ALTER TABLE perfis
+ADD COLUMN icon VARCHAR(50) NOT NULL AFTER css_class;
+
+UPDATE perfis SET css_class = 'admin',      icon = 'shield-lock-fill' WHERE id = 1;
+UPDATE perfis SET css_class = 'individual', icon = 'person-fill'      WHERE id = 2;
+UPDATE perfis SET css_class = 'operador',   icon = 'gear-fill'        WHERE id = 3;
+UPDATE perfis SET css_class = 'equipe',     icon = 'people-fill'      WHERE id = 4;
+
 CREATE TABLE equipes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -35,6 +46,13 @@ CREATE TABLE quadras (
 
     FOREIGN KEY (tipo_id) REFERENCES tipos_quadra(id)
 );
+
+INSERT INTO tipos_quadra (id, nome) VALUES
+(1, 'Futsal'),
+(2, 'Basquete'),
+(3, 'Vôlei'),
+(4, 'Tênis'),
+(5, 'Poliesportiva');
 
 CREATE TABLE horarios (
     id INT AUTO_INCREMENT PRIMARY KEY,

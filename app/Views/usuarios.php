@@ -66,7 +66,40 @@
             <th></th>
           </tr>
         </thead>
-        <tbody id="listaUsuarios"></tbody>
+        <tbody>
+        <?php if (!empty($listarUsuarios)): ?>
+          <?php foreach ($listarUsuarios as $usuario): ?>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <div class="avatar <?= $usuario['css_class'] ?>">
+                    <i class="bi bi-<?= $usuario['icon'] ?>"></i>
+                  </div>
+                  <div class="nome">
+                    <strong><?= $usuario['nome'] ?></strong>
+                    <small><?= $usuario['tipo_perfil'] ?></small>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <small><i class="bi bi-envelope"></i> <?= $usuario['email'] ?></small><br>
+                <small><i class="bi bi-telephone"></i> <?= $usuario['telefone'] ?></small>
+              </td>
+              <td><strong><?= $usuario['reservas'] ?></strong></td>
+              <td><?= $usuario['atividades'] ?></td>
+              <td class="text-end">
+                <i class="bi bi-three-dots-vertical"></i>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        <?php else: ?>
+            <div class="col-12">
+                <div class="alert alert-warning">
+                    Nenhuma Usuario cadastrada.
+                </div>
+            </div>
+        <?php endif; ?>
+        </tbody>
       </table>
     </div>
 
