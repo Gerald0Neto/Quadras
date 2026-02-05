@@ -107,43 +107,66 @@
 </div>
 
 <!-- MODAL -->
-<div class="modal fade" id="modalCadastro" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content p-3">
-      <div class="modal-header border-0">
-        <h5>Novo Cadastro</h5>
-        <button class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
+<form method="POST" action="./usuarios/insert">
 
-      <div class="modal-body">
-        <div class="btn-group w-100 mb-3">
-          <button class="btn btn-light active">Usuário</button>
-          <button class="btn btn-light">Equipe</button>
+    <div class="modal fade" id="modalCadastro" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Novo Cadastro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Nome</label>
+              <input type="text" class="form-control" name="nome" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="text" class="form-control" name="email" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Senha</label>
+              <input type="text" class="form-control" name="senha" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Telefone</label>
+              <input type="text" class="form-control" name="telefone" required>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label">Perfil</label>
+                <select name="perfil" class="form-select" required>
+                    <option value="">Selecione</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Individual</option>
+                    <option value="3">Operador</option>
+                    <option value="4">Equipe</option>
+                </select>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+
+            <button type="submit" class="btn btn-success">
+              Confirmar
+            </button>
+          </div>
+
         </div>
-
-        <div class="mb-3">
-          <label class="form-label">Nome</label>
-          <input type="text" class="form-control" placeholder="Nome completo ou da equipe">
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-control" placeholder="email@exemplo.com">
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Telefone</label>
-          <input type="text" class="form-control" placeholder="(00) 00000-0000">
-        </div>
-      </div>
-
-      <div class="modal-footer border-0">
-        <button class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-        <button class="btn btn-success">Salvar</button>
       </div>
     </div>
-  </div>
-</div>
+</form>
 
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
