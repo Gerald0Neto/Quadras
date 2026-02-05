@@ -88,8 +88,32 @@
               <td><strong><?= $usuario['reservas'] ?></strong></td>
               <td><?= $usuario['atividades'] ?></td>
               <td class="text-end">
-                <i class="bi bi-three-dots-vertical"></i>
+                <div class="dropdown">
+                  <button 
+                    class="btn btn-sm btn-light" 
+                    type="button" 
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </button>
+
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="editar.php?id=<?= $id ?>">
+                        <i class="bi bi-pencil-square me-2"></i> Editar
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item text-danger" 
+                        href="apagar.php?id=<?= $id ?>"
+                        onclick="return confirm('Deseja realmente apagar?')">
+                        <i class="bi bi-trash me-2"></i> Apagar
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </td>
+
             </tr>
           <?php endforeach; ?>
         <?php else: ?>
