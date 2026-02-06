@@ -25,7 +25,8 @@ class UsuariosModel
         
     }
 
-    public function insert($dados){
+    public function insert($dados)
+    {
         $db = Conexao::getConnection();
 
         $senhaHash = password_hash($dados['senha'], PASSWORD_DEFAULT);
