@@ -104,11 +104,12 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item text-danger" 
-                        href="apagar.php?id=<?= $id ?>"
-                        onclick="return confirm('Deseja realmente apagar?')">
-                        <i class="bi bi-trash me-2"></i> Apagar
-                      </a>
+                      <button class="dropdown-item text-danger btn-apagar"
+                              data-id="<?= $usuario['id'] ?>"
+                              data-bs-toggle="modal"
+                              data-bs-target="#modalExcluir">
+                          <i class="bi bi-trash"></i> Apagar
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -129,6 +130,50 @@
 
   </main>
 </div>
+
+<!-- MODAL EXCLUIR -->
+<form method="POST" action="./usuarios/excluir">
+    <input type="hidden" name="id" id="userId">
+    <div class="modal fade" id="modalExcluir" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Excluir Usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+
+            <div class="mb-3">
+              <label class="form-label">Tem certeza de que deseja excluir este usuario?</label>
+      
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+
+            <!-- BOTÃO QUE ENVIA O FORM -->
+            <button type="submit" class="btn btn-success">
+              Confirmar
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</form>
+<script>
+document.querySelectorAll('.btn-apagar').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('userId').value = btn.dataset.id;
+  });
+});
+</script>
 
 <!-- MODAL -->
 <form method="POST" action="./usuarios/insert">

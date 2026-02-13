@@ -11,7 +11,9 @@ class UsuariosModel
     {
         $db = Conexao::getConnection();
 
-        $sql = "SELECT  e.nome,
+        $sql = "SELECT  
+                        e.id,   
+                        e.nome,
                         e.email,
                         e.telefone,
                         p.nome AS tipo_perfil,
@@ -23,6 +25,18 @@ class UsuariosModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
         
+    }
+
+    public function excluir($dados)
+    {
+        $db = Conexao::getConnection();
+
+        $sql = "DELETE FROM usuarios WHERE id = :id";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":id", $dados['id'], PDO::PARAM_INT);
+
+        return $stmt->execute();
     }
 
     public function insert($dados)

@@ -26,6 +26,22 @@ class Usuarios
         }
     }
 
+    public function excluir()
+    {
+        if($_SERVER['REQUEST_METHOD'] === "POST"){
+            
+            $dados = [
+                "id" => $_POST['id']
+            ];
+
+            $modelUsuarios = new UsuariosModel();
+            $modelUsuarios->excluir($dados);
+            
+            header('Location: ../usuarios');
+            exit;
+        }
+    }
+
     public function index(?string $param = null): void
     {
         $modelUsuarios = new UsuariosModel();
