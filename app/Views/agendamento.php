@@ -72,7 +72,7 @@
     <!-- CALENDÁRIO -->
     <div class="card p-3">
       <h5>Calendário de Reservas</h5>
-      <small class="text-muted">Janeiro de 2026</small>
+      <small class="text-muted">2026</small>
 
       <div class="legenda mt-3 mb-2">
         <span class="badge bg-success">Disponível</span>
@@ -85,18 +85,30 @@
           <thead>
             <tr>
               <th>Horário</th>
-              <th>Dom 18</th>
-              <th>Seg 19</th>
-              <th class="text-success">Ter 20</th>
-              <th>Qua 21</th>
-              <th>Qui 22</th>
-              <th>Sex 23</th>
-              <th>Sáb 24</th>
+              <?php foreach ($dias as $dia): ?>
+                <th><?= $dia['label'] ?></th>
+              <?php endforeach; ?>
             </tr>
           </thead>
-          <tbody id="gradeHorarios"></tbody>
+
+          <tbody>
+            <?php foreach ($horarios as $hora): ?>
+              <tr>
+                <td><strong><?= $hora ?></strong></td>
+
+                <?php foreach ($dias as $dia): ?>
+                  <td>
+                    <button class="btn btn-outline-success btn-sm rounded-pill w-100">
+                      Livre
+                    </button>
+                  </td>
+                <?php endforeach; ?>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
         </table>
       </div>
+
     </div>
 
   </main>
