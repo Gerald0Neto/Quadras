@@ -26,6 +26,25 @@ class Usuarios
         }
     }
 
+    public function update()
+    {
+        if($_SERVER['REQUEST_METHOD'] === "POST"){
+            
+            $dados = [
+                "id"       => $_POST['id'],
+                "nome"     => $_POST['nome'],
+                "email"    => $_POST['email'],
+                "telefone" => $_POST['telefone'],
+                "perfil"   => $_POST['perfil']
+            ];
+
+            $modelUsuarios = new UsuariosModel();
+            $modelUsuarios->update($dados);
+            header('Location: ../usuarios');
+            exit;
+        }
+    }
+
     public function excluir()
     {
         if($_SERVER['REQUEST_METHOD'] === "POST"){

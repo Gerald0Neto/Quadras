@@ -16,6 +16,7 @@ class UsuariosModel
                         e.nome,
                         e.email,
                         e.telefone,
+                        e.perfil_id,
                         p.nome AS tipo_perfil,
                         p.css_class,
                         p.icon
@@ -35,6 +36,24 @@ class UsuariosModel
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":id", $dados['id'], PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
+    public function update($dados)
+    {
+        $db = Conexao::getConnection();
+
+        $sql = "UPDATE usuarios 
+                SET nome = :nome, email = :email, telefone = :telefone, perfil_id = :tipo_user
+                WHERE id = :id";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":id",         $dados['id'],       PDO::PARAM_INT);
+        $stmt->bindParam(":nome",       $dados['nome'],     PDO::PARAM_STR);
+        $stmt->bindParam(":email",      $dados['email'],    PDO::PARAM_STR);
+        $stmt->bindParam(":telefone",   $dados['telefone'], PDO::PARAM_STR);
+        $stmt->bindParam(":tipo_user",  $dados['perfil'],   PDO::PARAM_INT);
 
         return $stmt->execute();
     }

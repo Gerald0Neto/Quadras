@@ -99,9 +99,16 @@
 
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a class="dropdown-item" href="editar.php?id=<?= $id ?>">
-                        <i class="bi bi-pencil-square me-2"></i> Editar
-                      </a>
+                      <button class="dropdown-item btn-editar"
+                              data-id="<?= $usuario['id'] ?>"
+                              data-nome="<?= $usuario['nome'] ?>"
+                              data-email="<?= $usuario['email'] ?>"
+                              data-telefone="<?= $usuario['telefone'] ?>"
+                              data-perfil="<?= $usuario['perfil_id'] ?>"
+                              data-bs-toggle="modal"
+                              data-bs-target="#modalEditar">
+                          <i class="bi bi-pencil"></i> Editar
+                      </button>
                     </li>
                     <li>
                       <button class="dropdown-item text-danger btn-apagar"
@@ -130,7 +137,73 @@
 
   </main>
 </div>
+<!-- MODAL EDITAR-->
+<form method="POST" action="./usuarios/update">
+  <input type="hidden" name="id" id="userId">
+    <div class="modal fade" id="modalEditar" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
+          <div class="modal-header">
+            <h5 class="modal-title">Novo Cadastro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Nome</label>
+              <input type="text" class="form-control" name="nome" id="userNome" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="text" class="form-control" name="email" id="userEmail" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Telefone</label>
+              <input type="text" class="form-control" name="telefone" id="userTelefone" required>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label">Perfil</label>
+                <select name="perfil" class="form-select" id="userPerfil" required>
+                    <option value="">Selecione</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Individual</option>
+                    <option value="3">Operador</option>
+                    <option value="4">Equipe</option>
+                </select>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+
+            <button type="submit" class="btn btn-success">
+              Confirmar
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</form>
+<script>
+document.querySelectorAll('.btn-editar').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('userId').value = btn.dataset.id;
+    document.getElementById('userNome').value = btn.dataset.nome;
+    document.getElementById('userEmail').value = btn.dataset.email;
+    document.getElementById('userTelefone').value = btn.dataset.telefone;
+    document.getElementById('userPerfil').value = btn.dataset.perfil;
+  });
+});
+</script>
 <!-- MODAL EXCLUIR -->
 <form method="POST" action="./usuarios/excluir">
     <input type="hidden" name="id" id="userId">
