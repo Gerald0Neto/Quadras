@@ -46,25 +46,25 @@
       <div class="col-md-3">
         <div class="card-resumo">
           <h6>Reservas Hoje</h6>
-          <h3>24</h3>
+          <h3>0</h3>
         </div>
       </div>
       <div class="col-md-3">
         <div class="card-resumo">
           <h6>Horários Livres</h6>
-          <h3>18</h3>
+          <h3>0</h3>
         </div>
       </div>
       <div class="col-md-3">
         <div class="card-resumo">
           <h6>Pendentes</h6>
-          <h3>3</h3>
+          <h3>0</h3>
         </div>
       </div>
       <div class="col-md-3">
         <div class="card-resumo">
           <h6>Canceladas</h6>
-          <h3>1</h3>
+          <h3>0</h3>
         </div>
       </div>
     </div>
@@ -134,9 +134,10 @@
           <label>Horário</label>
           <select class="form-select">
             <option>Selecione</option>
-            <option>08:00</option>
-            <option>09:00</option>
-            <option>10:00</option>
+             <?php foreach ($horarios as $hora): ?>
+              <option><?= $hora ?></option>
+            <?php endforeach; ?>
+            
           </select>
         </div>
 
@@ -144,8 +145,9 @@
           <label>Quadra</label>
           <select class="form-select">
             <option>Selecione a quadra</option>
-            <option>Quadra 1 - Futsal</option>
-            <option>Quadra 2 - Basquete</option>
+             <?php foreach ($listarQuadras as $quadra): ?>
+              <option value="<?= $quadra['id'] ?>"><?= $quadra['nome'] ?></option>
+            <?php endforeach; ?>
           </select>
         </div>
 
@@ -160,8 +162,19 @@
         <div class="mb-3">
           <label>Usuário / Equipe</label>
           <select class="form-select">
-            <option>Time Verde</option>
-            <option>Time Azul</option>
+            <option>Selecione o usuário</option>
+           <?php foreach ($listarUsuarios as $usuario): ?>
+              <option value="<?= $usuario['id'] ?>"><?= $usuario['nome'] ?></option>
+           <?php endforeach; ?>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label>Status</label>
+          <select class="form-select">
+            <option>Confirmada</option>
+            <option>Pendente</option>
+            <option>Cancelada</option>
           </select>
         </div>
 
