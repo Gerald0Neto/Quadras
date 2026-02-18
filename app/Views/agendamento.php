@@ -94,7 +94,7 @@
           <tbody>
             <?php foreach ($horarios as $hora): ?>
               <tr>
-                <td><strong><?= $hora ?></strong></td>
+                <td><strong><?= date('H:i', strtotime($hora['hora'])) ?></strong></td>
 
                 <?php foreach ($dias as $dia): ?>
                   <td>
@@ -113,8 +113,8 @@
 
   </main>
 </div>
-
 <!-- MODAL -->
+<form method="POST" action="./Agendamento/insert">
 <div class="modal fade" id="modalReserva" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -127,23 +127,28 @@
       <div class="modal-body">
         <div class="mb-3">
           <label>Data</label>
-          <input type="date" class="form-control">
+          <input name="data" type="date" class="form-control">
         </div>
 
         <div class="mb-3">
-          <label>Horário</label>
-          <select class="form-select">
-            <option>Selecione</option>
-             <?php foreach ($horarios as $hora): ?>
-              <option><?= $hora ?></option>
-            <?php endforeach; ?>
-            
-          </select>
+            <label>Horário</label>
+            <select name="horario_id" class="form-select" required>
+                <option value="">Selecione</option>
+
+                <?php foreach ($horarios as $hora): ?>
+                  
+                    <option value="<?= $hora['id'] ?>">
+                        <?= date('H:i', strtotime($hora['hora'])) ?>
+                    </option>
+                <?php endforeach; ?>
+
+            </select>
         </div>
+
 
         <div class="mb-3">
           <label>Quadra</label>
-          <select class="form-select">
+          <select name="quadra_id" class="form-select">
             <option>Selecione a quadra</option>
              <?php foreach ($listarQuadras as $quadra): ?>
               <option value="<?= $quadra['id'] ?>"><?= $quadra['nome'] ?></option>
@@ -153,7 +158,7 @@
 
         <div class="mb-3">
           <label>Duração</label>
-          <select class="form-select">
+          <select name="duracao" class="form-select">
             <option>1 hora</option>
             <option>2 horas</option>
           </select>
@@ -161,7 +166,7 @@
 
         <div class="mb-3">
           <label>Usuário / Equipe</label>
-          <select class="form-select">
+          <select name="usuario_id" class="form-select">
             <option>Selecione o usuário</option>
            <?php foreach ($listarUsuarios as $usuario): ?>
               <option value="<?= $usuario['id'] ?>"><?= $usuario['nome'] ?></option>
@@ -171,7 +176,7 @@
 
         <div class="mb-3">
           <label>Status</label>
-          <select class="form-select">
+          <select name="status" class="form-select">
             <option>Confirmada</option>
             <option>Pendente</option>
             <option>Cancelada</option>
@@ -192,6 +197,7 @@
     </div>
   </div>
 </div>
+</form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="./assets/js/agendamento.js"></script>

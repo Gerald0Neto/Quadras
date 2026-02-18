@@ -56,9 +56,9 @@ INSERT INTO tipos_quadra (id, nome) VALUES
 
 CREATE TABLE horarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    hora_inicio TIME NOT NULL,
-    hora_fim TIME NOT NULL
+    hora TIME NOT NULL
 );
+
 
 CREATE TABLE agendamentos (
     id INT AUTO_INCREMENT PRIMARY KEY,
