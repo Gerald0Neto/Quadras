@@ -12,12 +12,12 @@ class Agendamento
     {
         $modelAgendamento = new AgendamentoModel();
         $dados = [
-            'data' => $_POST['data'],
-            'horario_id' => $_POST['horario_id'],
-            'quadra_id' => $_POST['quadra_id'],
-            'usuario_id' => $_POST['usuario_id'],
-            'duracao' => $_POST['duracao'],
-            'status' => $_POST['status'],
+            'data'        => $_POST['data'],
+            'horario_id'  => $_POST['horario_id'],
+            'quadra_id'   => $_POST['quadra_id'],
+            'usuario_id'  => $_POST['usuario_id'],
+            'duracao'     => $_POST['duracao'],
+            'status'      => $_POST['status'],
             'observacoes' => $_POST['observacoes']
         ];
 

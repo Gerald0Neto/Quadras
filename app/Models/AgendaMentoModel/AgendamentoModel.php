@@ -48,13 +48,13 @@ class AgendamentoModel
                       VALUES (:data, :horario_id, :quadra_id, :usuario_id, :duracao, :status, :observacoes)";
 
         $stmtexecute = $db->prepare($querystmt);
-        $stmtexecute->bindParam(":data", $dados['data'], PDO::PARAM_STR);
-        $stmtexecute->bindParam(":horario_id", $dados['horario_id'], PDO::PARAM_INT);
-        $stmtexecute->bindParam(":quadra_id", $dados['quadra_id'], PDO::PARAM_INT);
-        $stmtexecute->bindParam(":usuario_id", $dados['usuario_id'], PDO::PARAM_INT);
-        $stmtexecute->bindParam(":duracao", $dados['duracao'], PDO::PARAM_INT);
-        $stmtexecute->bindParam(":status", $dados['status'], PDO::PARAM_STR);
-        $stmtexecute->bindParam(":observacoes", $dados['observacoes'], PDO::PARAM_STR);
+        $stmtexecute->bindParam(":data",       $dados['data'],        PDO::PARAM_STR);
+        $stmtexecute->bindParam(":horario_id", $dados['horario_id'],  PDO::PARAM_INT);
+        $stmtexecute->bindParam(":quadra_id",  $dados['quadra_id'],   PDO::PARAM_INT);
+        $stmtexecute->bindParam(":usuario_id", $dados['usuario_id'],  PDO::PARAM_INT);
+        $stmtexecute->bindParam(":duracao",    $dados['duracao'],     PDO::PARAM_INT);
+        $stmtexecute->bindParam(":status",     $dados['status'],      PDO::PARAM_STR);
+        $stmtexecute->bindParam(":observacoes",$dados['observacoes'], PDO::PARAM_STR);
         return $stmtexecute->execute();
     }
 
